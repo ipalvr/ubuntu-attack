@@ -36,7 +36,7 @@ stages:
           inputs:
           targetType: inline
           script: 
-            curl -k -O -u $USER:$PW $TL_CONSOLE/api/v1/util/twistcli;
+            curl -k -O -u $(USER):$(PW) $(TL_CONSOLE)/api/v1/util/twistcli;
             chmod a+x twistcli;
-            ./twistcli images scan --address $TL_CONSOLE -u $USER -p $PW --details $(containerRegistry)/testimage:$(Build.BuildId);
+            ./twistcli images scan --address $(TL_CONSOLE) -u $(USER) -p $(PW) --details $(containerRegistry)/ubuntu-latest:$(Build.BuildId);
             
