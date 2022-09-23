@@ -23,8 +23,7 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        command: 
-        containerRegistry: $(dockerRegistryServiceConnection)
+        command: build
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
