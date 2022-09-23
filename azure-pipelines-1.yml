@@ -23,7 +23,8 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        command: build
+        command: 
+        containerRegistry: $(dockerRegistryServiceConnection)
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
@@ -35,5 +36,5 @@ stages:
          
          curl -k -O -u $(USER):$(PW) $(TL_CONSOLE)/api/v1/util/twistcli;
                      chmod a+x twistcli;
-                     ./twistcli images scan --address $(TL_CONSOLE) -u $(USER) -p $(PW) --details ipalvrubuntuattack:$(Build.BuildId)
+                     ./twistcli images scan --address $(TL_CONSOLE) -u $(USER) -p $(PW) --details $(containerRegistry)/ipalvrubuntuattack:$(Build.BuildId)
             
