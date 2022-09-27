@@ -34,7 +34,6 @@ stages:
         command: build
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
     - task: Bash@3
@@ -45,4 +44,4 @@ stages:
          
          curl -k -O -u $(USER):$(PW) $(TL_CONSOLE)/api/v1/util/twistcli;
                      chmod a+x twistcli;
-                     ./twistcli images scan --address $(TL_CONSOLE) -u $(USER) -p $(PW) --details $(containerRegistry)$(imageRepository):$(Build.BuildId)
+                     ./twistcli images scan --address $(TL_CONSOLE) -u $(USER) -p $(PW) --details $(imageRepository):$(Build.BuildId)
