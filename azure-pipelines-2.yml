@@ -31,4 +31,3 @@ stages:
       inputs:
         scanType: 'images'
         twistlockService: 'SE Sandbox'
-        artifact: 'ubuntu-latest'
