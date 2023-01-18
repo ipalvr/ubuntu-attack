@@ -1,4 +1,4 @@
-#Attack machine for Compute
+#Attack machine for Compute Test
 FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install apt-utils -y
