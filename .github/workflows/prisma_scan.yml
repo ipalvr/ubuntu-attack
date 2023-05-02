@@ -2,26 +2,21 @@ jobs:
   build-and-scan:
     name: Build and scan image
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
-
       - name: Build the image
         run: docker build -t $IMAGE_NAME .
-
       - name: Prisma Cloud image scan
         id: scan
         uses: PaloAltoNetworks/prisma-cloud-scan@v1
         with:
-          pcc_console_url: ${{ secrets.PCC_CONSOLE_URL }}
-          access_key: ${{ secrets.PRISMA_CLOUD_ACCESS_KEY }}
-          secret_key: ${{ secrets.PRISMA_CLOUD_SECRET_KEY }}
-          image_name: ${{ env.IMAGE_NAME }}
-
-      # (Optional) for compatibility with GitHub's code scanning alerts
+          pcc_console_url: '${{ secrets.PCC_CONSOLE_URL }}'
+          access_key: '${{ secrets.PRISMA_CLOUD_ACCESS_KEY }}'
+          secret_key: '${{ secrets.PRISMA_CLOUD_SECRET_KEY }}'
+          image_name: '${{ env.IMAGE_NAME }}'
       - name: Upload SARIF file
-        if: ${{ always() }} # necessary if using failure thresholds in the image scan
+        if: '${{ always() }}'
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: ${{ steps.scan.outputs.sarif_file }}
+          sarif_file: '${{ steps.scan.outputs.sarif_file }}'
