@@ -1,4 +1,4 @@
-#Attack Machine
+#Attack Machine - Demo Test
 FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install apt-utils -y
