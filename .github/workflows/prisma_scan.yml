@@ -1,4 +1,4 @@
-name: Prisma Cloud Scan
+name:  Prisma Cloud Scan
 on:  [push]
 jobs:
   scan:
