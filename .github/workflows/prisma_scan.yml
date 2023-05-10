@@ -1,22 +1,17 @@
+name: Prisma Cloud Scan
+on:  [push}
 jobs:
-  build-and-scan:
-    name: Build and scan image
+  scan:
+    name: Scan image
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
+      - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Build the image
-        run: docker build -t $IMAGE_NAME .
-      - name: Prisma Cloud image scan
-        id: scan
-        uses: PaloAltoNetworks/prisma-cloud-scan@v1
+
+      - name: Run Prisma Cloud 
+        id: Prisma Cloud
+        uses: bridgecrewio/checkov-action@master 
+        env:
+          PRISMA_API_URL: https://api.prismacloud.io
         with:
-          pcc_console_url: '${{ secrets.PCC_CONSOLE_URL }}'
-          access_key: '${{ secrets.PRISMA_CLOUD_ACCESS_KEY }}'
-          secret_key: '${{ secrets.PRISMA_CLOUD_SECRET_KEY }}'
-          image_name: '${{ env.IMAGE_NAME }}'
-      - name: Upload SARIF file
-        if: '${{ always() }}'
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: '${{ steps.scan.outputs.sarif_file }}'
+          api-key: ${{ secrets.BC_API_KEY }}
