@@ -1,5 +1,5 @@
 name: Prisma Cloud Scan
-on:  [push}
+on:  [push]
 jobs:
   scan:
     name: Scan image
