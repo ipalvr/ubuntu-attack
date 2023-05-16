@@ -1,4 +1,4 @@
-#Attack Machine - Demo Test
+#Attack Machine - Demo Test Central Majors
 FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install apt-utils -y
