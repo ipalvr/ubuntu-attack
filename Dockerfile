@@ -1,4 +1,4 @@
-#Attack Machine - Demo Central Majors - Dec '23
+#Attack Machine - Demo Central Majors - April '24
 FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install apt-utils -y
